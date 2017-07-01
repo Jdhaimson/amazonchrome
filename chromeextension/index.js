@@ -1,4 +1,4 @@
-[
+const pants = [
     {
         "url": "https://www.amazon.com/gp/product/B06X92D246/ref=s9_acsd_al_bw_c_x_1_w?ie=UTF8&pd_rd_r=NP1AG1PXK88C6Y8T3FAX&pd_rd_w=qjwl3&pd_rd_wg=vimHR&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-2&pf_rd_r=NP1AG1PXK88C6Y8T3FAX&pf_rd_r=NP1AG1PXK88C6Y8T3FAX&pf_rd_t=101&pf_rd_p=3709846b-9110-478f-b42d-20a21b641639&pf_rd_p=3709846b-9110-478f-b42d-20a21b641639&pf_rd_i=16927296011",
         "imgurl":"https://images-na.ssl-images-amazon.com/images/I/71bzQoRnuSL._UL1500_.jpg",
@@ -35,4 +35,21 @@
         "name":"BB Dakota Women's Tara Floral Print Crepe Jumpsuit",
         "price":"$74.99"
     }
-]
+];
+
+const millenialTalk = ['umm, yes! 🙌', 'yes, please! 💁', 'Get me this now! 💣', 'preach 🙏', 'so hot 🔥🔥🔥'];
+
+const randPant = Math.floor(Math.random() * pants.length);
+const pantInfo = pants[randPant];
+
+const randMillenial = Math.floor(Math.random() * millenialTalk.length);
+const millenialInfo = millenialTalk[randMillenial];
+
+$(function() {
+    $(".image img").attr("src", pantInfo.imgurl);
+    $(".description .price").text(pantInfo.price);
+    $(".description .name").text(pantInfo.name);
+    $(".buy-btn a").attr("href", pantInfo.url);
+    $(".buy-btn a").text(millenialInfo);
+
+});

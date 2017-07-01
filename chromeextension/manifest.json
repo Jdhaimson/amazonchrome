@@ -10,6 +10,6 @@
   "permissions": [
   ],
   "chrome_url_overrides" : {
-    "newtab": "product.html"
+    "newtab": "index.html"
   }
 }
