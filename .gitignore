@@ -1,4 +1,7 @@
 *.DS_Store
 chromeextension.zip
-*.pyc
 aws_creds.csv
+venv
+*.pyc
+staticfiles
+db.sqlite3

@@ -2,26 +2,50 @@ const millenialTalk = ['umm, yes! 🙌', 'yes, please! 💁', 'Get me this now! 
 const randMillenial = Math.floor(Math.random() * millenialTalk.length);
 const millenialInfo = millenialTalk[randMillenial];
 
-$.ajax({
-    dataType: "json",
-    url: "https://s3.us-east-2.amazonaws.com/hipbuy/dress_results.json",
-    success: function(data) {
-        const pants = data;
-        const randPant = Math.floor(Math.random() * pants.length);
-        const pantInfo = pants[randPant];
+$(function() {
+    try {
+    $.ajax({
+        url: 'https://hidden-peak-93606.herokuapp.com/summer',
+        type: 'GET',
+        contentType: 'application/json',
+        success: function(item) {
+            renderView(item);
+        },
+        error: function(xhr, status, error) {
+            console.log(status + '; ' + error);
+            s3fallback();
+        }
+     });
 
-        $(function() {
-            $(".image img").attr("src", pantInfo.imgurl);
-            $(".description .price").text(pantInfo.price);
-            $(".description .name").text(pantInfo.name);
-            $(".buy-btn a").attr("href", pantInfo.url);
-            $(".buy-btn a").text(millenialInfo);
-        });
-    },
-    error: function(xhr, status, error) {
-        console.log(status + '; ' + error);
+    } catch(e) {
+        console.log(e);
+        s3fallback();
     }
 });
+
+function s3fallback() {
+    $.ajax({
+        dataType: "json",
+        url: "https://s3.us-east-2.amazonaws.com/hipbuy/dress_results.json",
+        success: function(data) {
+            const pants = data;
+            const randPant = Math.floor(Math.random() * pants.length);
+            const pantInfo = pants[randPant];
+            renderView(pantInfo);
+        },
+        error: function(xhr, status, error) {
+            console.log(status + '; ' + error);
+        }
+    });
+}
+
+function renderView({imgurl, price, name, url}) {
+    $(".image img").attr("src", imgurl);
+    $(".description .price").text(price);
+    $(".description .name").text(name);
+    $(".buy-btn a").attr("href", url);
+    $(".buy-btn a").text(millenialInfo);
+}
 
 
 // Add google analytics code
