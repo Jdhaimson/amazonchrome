@@ -2,12 +2,12 @@
   "manifest_version": 2,
   "name": "HipBuy",
   "description": "This extension shows an amazon product on the new tab page",
-  "version": "0.12",
+  "version": "0.13",
   "icons": { "16": "icons/16x16.png"
 			 , "48": "icons/48x48.png"
 			 , "128": "icons/128x128.png" 
   },
-  "content_security_policy":"script-src 'self' https://cdnjs.cloudflare.com/ https://ssl.google-analytics.com/; object-src 'self'",
+  "content_security_policy":"script-src 'self' https://cdnjs.cloudflare.com/ https://s3.us-east-2.amazonaws.com/ https://ssl.google-analytics.com/; object-src 'self'",
   "chrome_url_overrides" : {
     "newtab": "index.html"
   }
