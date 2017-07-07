@@ -2,6 +2,8 @@
 chromeextension.zip
 aws_creds.csv
 venv
+env
 *.pyc
 staticfiles
 db.sqlite3
+.env

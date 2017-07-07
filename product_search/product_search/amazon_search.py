@@ -1,11 +1,11 @@
 from amazon.api import AmazonAPI
 
-def get_search_results(AMAZON_ACCESS_KEY, AMAZON_SECRET_KEY, AMAZON_ASSOC_TAG):
+def get_search_results(AMAZON_ACCESS_KEY, AMAZON_SECRET_KEY, AMAZON_ASSOC_TAG, Keywords = 'dress'):
     """
     Function which queries the Amazon Product API to get relevant products
     """
     amazon_api = AmazonAPI(AMAZON_ACCESS_KEY, AMAZON_SECRET_KEY, AMAZON_ASSOC_TAG)
-    products = amazon_api.search_n(20, Keywords='dress', SearchIndex='FashionWomen', Sort="relevancerank")
+    products = amazon_api.search_n(20, Keywords=Keywords, SearchIndex='FashionWomen', Sort="relevancerank")
     hipbuy_products = map(_amazon_product_to_hipbuy, products)
     return hipbuy_products
 
